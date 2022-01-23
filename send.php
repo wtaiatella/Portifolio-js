@@ -1,6 +1,7 @@
 <?php
 
 require './sendgrid-php/sendgrid-php.php';
+require 'keys.php';
 
 $email_site = 'wtaiatella@gmail.com';
 $nome_site = "Wagner Taiatella's Resume";
@@ -30,7 +31,7 @@ $email->setReplyTo($email_user, $nome_user);
 $email->setSubject('Formulário Bikcraft');
 $email->addContent('text/plain', $body_content);
 
-$sendgrid = new \SendGrid('minhachave***********');
+$sendgrid = new \SendGrid($sendgrid_api);
 try {
     $response = $sendgrid->send($email);
     print $response->statusCode() . "\n";
